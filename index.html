@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chinese Zodiac Sign</title>
+  <link rel="stylesheet" href="/Chinese_Zodiac/mystyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&family=Rock+Salt&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lugrasimo&family=Rock+Salt&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kaushan+Script&family=Lugrasimo&family=Rock+Salt&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="container">
+    <h1>Chinese Zodiac Sign</h1>
+    <label for="yearOfBirth">Year of Birth</label>
+    <input type="number" id="yearOfBirth" placeholder="Enter your year of birth">
+    <img src="/Chinese_Zodiac/image/16045.png" alt="logo" width="362" height="290">
+    <button onclick="displayZodiacSign()">Identify your Zodiac Sign</button>
+    <div class="result" id="result"></div>
+    <button onclick="retry()" id="tryAgainButton" style="display: none;">Try Again</button>
+  </div>
+
+  <script>
+    function displayZodiacSign() {
+      const yearOfBirthInput = document.getElementById("yearOfBirth");
+      const yearOfBirth = parseInt(yearOfBirthInput.value);
+    
+      let chineseZodiac;
+      if (isNaN(yearOfBirth)) {
+        chineseZodiac = { sign: "The input is invalid", image: "/Chinese_Zodiac/zodiac.image/ERRO.png" };
+      } else {
+        chineseZodiac = identifyChineseZodiac(yearOfBirth);
+      }
+    
+      const result = document.getElementById("result");
+      if (isNaN(yearOfBirth)) {
+        result.innerHTML = `
+          <h2>${chineseZodiac.sign}</h2>
+          <img src="${chineseZodiac.image}" alt="${chineseZodiac.sign}">
+        `;
+      } else {
+        result.innerHTML = `
+          <h2>Your Chinese zodiac sign is</h2>
+          <h2>${yearOfBirth} ${chineseZodiac.element} ${chineseZodiac.sign}</h2>
+          <div style="display: flex;">
+            <img src="${chineseZodiac.elementImage}" alt="${chineseZodiac.element}" width="200" height="150">
+            <img src="${chineseZodiac.image}" alt="${chineseZodiac.sign}">
+          </div>      
+          <h2>The same zodiac sign appeared in: ${yearOfBirth - 12}</h2>
+          <h2>The same zodiac sign will appear in: ${yearOfBirth + 12}</h2>
+        `;
+      }
+    
+      const tryAgainButton = document.getElementById("tryAgainButton");
+      tryAgainButton.style.display = "block";
+    }
+    
+    function identifyChineseZodiac(yearOfBirth) {
+        const zodiacSigns = [
+        { sign: "Rat", image: "/Chinese_Zodiac/zodiac.image/rat.png", elementImage: "/Chinese_Zodiac/zodiac.image/metal.png" },
+        { sign: "Ox", image: "/Chinese_Zodiac/zodiac.image/ox.png", elementImage: "/Chinese_Zodiac/zodiac.image/water.png" },
+        { sign: "Tiger", image: "/Chinese_Zodiac/zodiac.image/tiger.png", elementImage: "/Chinese_Zodiac/zodiac.image/wood.png" },
+        { sign: "Rabbit", image: "/Chinese_Zodiac/zodiac.image/rabbit.png", elementImage: "/Chinese_Zodiac/zodiac.image/fire.png" },
+        { sign: "Dragon", image: "/Chinese_Zodiac/zodiac.image/dragon.png", elementImage: "/Chinese_Zodiac/zodiac.image/earth.png" },
+        { sign: "Snake", image: "/Chinese_Zodiac/zodiac.image/snake.png", elementImage: "/Chinese_Zodiac/zodiac.image/metal.png" },
+        { sign: "Horse", image: "/Chinese_Zodiac/zodiac.image/horse.png", elementImage: "/Chinese_Zodiac/zodiac.image/water.png" },
+        { sign: "Goat", image: "/Chinese_Zodiac/zodiac.image/goat.png", elementImage: "/Chinese_Zodiac/zodiac.image/wood.png" },
+        { sign: "Monkey", image: "/Chinese_Zodiac/zodiac.image/monkey.png", elementImage: "/Chinese_Zodiac/zodiac.image/fire.png" },
+        { sign: "Rooster", image: "/Chinese_Zodiac/zodiac.image/rooster.png", elementImage: "/Chinese_Zodiac/zodiac.image/earth.png" },
+        { sign: "Dog", image: "/Chinese_Zodiac/zodiac.image/dog.png", elementImage: "/Chinese_Zodiac/zodiac.image/metal.png" },
+        { sign: "Pig", image: "/Chinese_Zodiac/zodiac.image/pig.png", elementImage: "/Chinese_Zodiac/zodiac.image/water.png" }
+      ];
+      const elements = ["Metal", "Water", "Wood", "Fire", "Earth"];
+      const zodiacYear = (yearOfBirth - 1900) % 12;
+      const elementYear = (yearOfBirth - 1900) % 10;
+      const zodiacSign = zodiacSigns[zodiacYear];
+      zodiacSign.element = elements[Math.floor(elementYear / 2)];
+
+      return zodiacSign;
+    }
+
+    function retry() {
+      const yearOfBirthInput = document.getElementById("yearOfBirth");
+      yearOfBirthInput.value = "";
+      const result = document.getElementById("result");
+      result.innerHTML = "";
+
+      const tryAgainButton = document.getElementById("tryAgainButton");
+      tryAgainButton.style.display = "none";
+    }
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,101 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url(/Chinese_Zodiac/image/backg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 100px;
+}
+
+h1 {
+  font-family: "Rock Salt", cursive;
+  font-weight: bold;
+  font-size: 40px;
+  font-style: normal;
+  text-align: center;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  font-style: normal;
+  margin-top: 0%;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+input[type="number"] {
+  width: 95%;
+  font-family: "Lugrasimo", cursive;
+  font-weight: bold;
+  font-style: normal;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.container img {
+  padding: 20px;
+  display: block;
+  margin: 0 auto;
+}
+
+h2 {
+  font-family: "Kaushan Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-style: normal;
+  text-align: center;
+  color: #333;
+}
+
+button {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  background-image: linear-gradient(to bottom, #ffcc00, #ff0000);
+  font-family: "Lugrasimo", cursive;
+  font-weight: bold;
+  font-style: normal;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+.result {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.result h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.result p {
+  color: #777;
+}
+
+.result img {
+  margin-top: 10px;
+  max-width: 200px;
+  height: auto;
+}
